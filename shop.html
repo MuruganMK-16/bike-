@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bike Zone | Shop</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #111;
+      color: white;
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: none;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card-img-top {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+      background: #222;
+    }
+    .navbar, footer {
+      background-color: #000;
+    }
+    .navbar .nav-link, .navbar .navbar-brand, footer {
+      color: white !important;
+    }
+    .price {
+      font-weight: bold;
+      color: #4CAF50;
+    }
+    .btn-buy {
+      background-color: #28a745;
+      border: none;
+      color: white;
+    }
+    .btn-buy:hover {
+      background-color: #218838;
+    }
+    .modal-content {
+      background-color: #222;
+      color: white;
+    }
+    .modal-header, .modal-footer {
+      border-color: #444;
+    }
+    .contact-img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .contact-info p {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .contact-info a {
+      color: #4CAF50;
+    }
+    iframe {
+      border-radius: 8px;
+    }
+    .nav-link-shop {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="#">Bike Zone</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link nav-link-shop" data-toggle="modal" data-target="#contactModal">Shop</a></li>
+      <li class="nav-item"><a class="nav-link" href="service.html">Service</a></li>
+      <li class="nav-item"><a class="nav-link" href="about.html">about</a></li>
+      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Shop Section -->
+<div class="container my-5">
+  <h2 class="text-center mb-4">Shop Our Bikes</h2>
+
+  <!-- Search & Filter -->
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+    <input type="text" id="bikeSearch" class="form-control mb-2 mb-md-0" style="max-width: 300px;" placeholder="Search bike name...">
+    <select id="priceFilter" class="form-control ml-md-3" style="max-width: 200px;">
+      <option value="all">All Prices</option>
+      <option value="below1L">Below ₹1,00,000</option>
+      <option value="1to3L">₹1,00,000 - ₹3,00,000</option>
+      <option value="above3L">Above ₹3,00,000</option>
+    </select>
+  </div>
+
+  <div class="row" id="bikeList">
+    <!-- Bike 1 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSPEPe0OdOfZi-QTkUYam4CHRh_g7wcMh81w&s" class="card-img-top" alt="RX100">
+        <div class="card-body">
+          <h5 class="card-title">RX100</h5>
+          <p class="price">₹85,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 2 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://i.pinimg.com/736x/73/0e/59/730e59b876529e6e9982b92ab0428dda.jpg" class="card-img-top" alt="MT">
+        <div class="card-body">
+          <h5 class="card-title">MT</h5>
+          <p class="price">₹1,65,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 3 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/61Xj8RK0NCL._AC_UF894,1000_QL80_.jpg" class="card-img-top" alt="RC 200">
+        <div class="card-body">
+          <h5 class="card-title">RC 200</h5>
+          <p class="price">₹2,15,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 4 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://i.pinimg.com/originals/f6/5e/50/f65e50e5868b6382c6297f266b4062d0.jpg" class="card-img-top" alt="GT650">
+        <div class="card-body">
+          <h5 class="card-title">GT650</h5>
+          <p class="price">₹3,15,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 5 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/642x361/n/cw/ec/135849/royalenfield-himalayan-right-side-view0.jpeg?isig=0&q=75" class="card-img-top" alt="Himalayan">
+        <div class="card-body">
+          <h5 class="card-title">Himalayan</h5>
+          <p class="price">₹2,30,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 6 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://images.firstpost.com/wp-content/uploads/2018/12/2019-Suzuki-Hayabusa.jpg?im=FitAndFill=(596,336)" class="card-img-top" alt="Hayabusa">
+        <div class="card-body">
+          <h5 class="card-title">Hayabusa</h5>
+          <p class="price">₹16,40,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 7 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/duke-200-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Duke 200">
+        <div class="card-body">
+          <h5 class="card-title">Duke 200</h5>
+          <p class="price">₹1,90,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 8 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/royal-enfield-classic-350-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Classic 350">
+        <div class="card-body">
+          <h5 class="card-title">Classic 350</h5>
+          <p class="price">₹2,10,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 9 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/honda-cb350-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Honda CB350">
+        <div class="card-body">
+          <h5 class="card-title">Honda CB350</h5>
+          <p class="price">₹2,00,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 10 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/yamaha-fz-s-v3-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Yamaha FZ-S V3">
+        <div class="card-body">
+          <h5 class="card-title">Yamaha FZ-S V3</h5>
+          <p class="price">₹1,20,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 11 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/tvs-apache-rtr-160-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="TVS Apache RTR 160">
+        <div class="card-body">
+          <h5 class="card-title">TVS Apache RTR 160</h5>
+          <p class="price">₹1,10,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 12 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/bajaj-pulsar-ns200-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Bajaj Pulsar NS200">
+        <div class="card-body">
+          <h5 class="card-title">Bajaj Pulsar NS200</h5>
+          <p class="price">₹1,40,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 13 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/hero-splendor-plus-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Hero Splendor Plus">
+        <div class="card-body">
+          <h5 class="card-title">Hero Splendor Plus</h5>
+          <p class="price">₹75,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 14 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/honda-shine-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Honda Shine">
+        <div class="card-body">
+          <h5 class="card-title">Honda Shine</h5>
+          <p class="price">₹80,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 15 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/royal-enfield-bullet-350-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Bullet 350">
+        <div class="card-body">
+          <h5 class="card-title">Bullet 350</h5>
+          <p class="price">₹1,50,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bike 16 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/141071/suzuki-gixxer-right-front-three-quarter-2.jpeg?isig=0&q=80" class="card-img-top" alt="Suzuki Gixxer">
+        <div class="card-body">
+          <h5 class="card-title">Suzuki Gixxer</h5>
+          <p class="price">₹1,30,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="text-white mt-4">🪖 Helmets</h3>
+<div class="container">
+  <div class="row">
+    <!-- Helmet 1 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71YqRJP9IAL._SX679_.jpg" class="card-img-top" alt="Steelbird Helmet">
+        <div class="card-body">
+          <h5 class="card-title">Steelbird Helmet</h5>
+          <p class="price">₹2,200</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 2 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/81z7K9RPSaL._SX679_.jpg" class="card-img-top" alt="Vega Helmet">
+        <div class="card-body">
+          <h5 class="card-title">Vega Helmet</h5>
+          <p class="price">₹1,500</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 3 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71oP0jW7cGL._SX679_.jpg" class="card-img-top" alt="Axor Helmet">
+        <div class="card-body">
+          <h5 class="card-title">Axor Helmet</h5>
+          <p class="price">₹3,000</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 4 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71B7BHWKXyL._SX679_.jpg" class="card-img-top" alt="Studds Helmet">
+        <div class="card-body">
+          <h5 class="card-title">Studds Helmet</h5>
+          <p class="price">₹1,800</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 5 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71zvrsVeuWL._SX679_.jpg" class="card-img-top" alt="LS2 Helmet">
+        <div class="card-body">
+          <h5 class="card-title">LS2 Helmet</h5>
+          <p class="price">₹3,500</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 6 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71w6Qw8v6GL._SX679_.jpg" class="card-img-top" alt="SMK Helmet">
+        <div class="card-body">
+          <h5 class="card-title">SMK Helmet</h5>
+          <p class="price">₹2,800</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 7 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71kQw8v6GL._SX679_.jpg" class="card-img-top" alt="Royal Enfield Helmet">
+        <div class="card-body">
+          <h5 class="card-title">Royal Enfield Helmet</h5>
+          <p class="price">₹2,400</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 8 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/81w6Qw8v6GL._SX679_.jpg" class="card-img-top" alt="Studds Ninja Elite">
+        <div class="card-body">
+          <h5 class="card-title">Studds Ninja Elite</h5>
+          <p class="price">₹2,100</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 9 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/81w6Qw8v6GL._SX679_.jpg" class="card-img-top" alt="Vega Crux">
+        <div class="card-body">
+          <h5 class="card-title">Vega Crux</h5>
+          <p class="price">₹1,900</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Helmet 10 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71YqRJP9IAL._SX679_.jpg" class="card-img-top" alt="Steelbird SBA-1">
+        <div class="card-body">
+          <h5 class="card-title">Steelbird SBA-1</h5>
+          <p class="price">₹2,600</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="text-white mt-4">🛠️ Mechanical Tools</h3>
+<div class="container">
+  <div class="row">
+    <!-- Tool Kit 1 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/61zq+OQgFxL._SX679_.jpg" class="card-img-top" alt="Tool Kit">
+        <div class="card-body">
+          <h5 class="card-title">Tool Kit Set</h5>
+          <p class="price">₹1,150</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 2 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/41HzpX59kSL._SX679_.jpg" class="card-img-top" alt="Wrench Set">
+        <div class="card-body">
+          <h5 class="card-title">Wrench Set</h5>
+          <p class="price">₹600</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 3 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/41rdzn4hFvL._SX679_.jpg" class="card-img-top" alt="Screwdriver Set">
+        <div class="card-body">
+          <h5 class="card-title">Screwdriver Set</h5>
+          <p class="price">₹250</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 4 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/51+THbpmQAL._SX679_.jpg" class="card-img-top" alt="Socket Wrench Set">
+        <div class="card-body">
+          <h5 class="card-title">Socket Wrench Set</h5>
+          <p class="price">₹850</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 5 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/41XfbqH7gVL._SX679_.jpg" class="card-img-top" alt="Pliers Set">
+        <div class="card-body">
+          <h5 class="card-title">Pliers Set</h5>
+          <p class="price">₹350</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 6 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/61tPMUzQ5pL._SX679_.jpg" class="card-img-top" alt="Hammer Set">
+        <div class="card-body">
+          <h5 class="card-title">Hammer Set</h5>
+          <p class="price">₹500</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 7 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/51X2a2WljtL._SX679_.jpg" class="card-img-top" alt="Drill Machine">
+        <div class="card-body">
+          <h5 class="card-title">Drill Machine</h5>
+          <p class="price">₹1,200</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 8 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/61vQvQw8v6L._SX679_.jpg" class="card-img-top" alt="Allen Key Set">
+        <div class="card-body">
+          <h5 class="card-title">Allen Key Set</h5>
+          <p class="price">₹300</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 9 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/61h5Qw8v6GL._SX679_.jpg" class="card-img-top" alt="Torque Wrench">
+        <div class="card-body">
+          <h5 class="card-title">Torque Wrench</h5>
+          <p class="price">₹1,800</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 10 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/51w6Qw8v6GL._SX679_.jpg" class="card-img-top" alt="Chain Cleaning Brush">
+        <div class="card-body">
+          <h5 class="card-title">Chain Cleaning Brush</h5>
+          <p class="price">₹150</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 11 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/61zq+OQgFxL._SX679_.jpg" class="card-img-top" alt="Multi Tool">
+        <div class="card-body">
+          <h5 class="card-title">Multi Tool</h5>
+          <p class="price">₹400</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tool Kit 12 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/51w6Qw8v6GL._SX679_.jpg" class="card-img-top" alt="Chain Lube">
+        <div class="card-body">
+          <h5 class="card-title">Chain Lube</h5>
+          <p class="price">₹220</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="text-white mt-4">🛢️ Oils</h3>
+<div class="container">
+  <div class="row">
+    <!-- Oil Brand 1: Castrol 4T Oil -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71Brjx44+aL._SX679_.jpg" class="card-img-top" alt="Castrol 4T Oil">
+        <div class="card-body">
+          <h5 class="card-title">Castrol 4T Oil</h5>
+          <p class="price">₹480</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 2: Motul 3000 Oil -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71uHmj7JH6L._SX679_.jpg" class="card-img-top" alt="Motul 3000 Oil">
+        <div class="card-body">
+          <h5 class="card-title">Motul 3000 Oil</h5>
+          <p class="price">₹950</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 3: Shell Advance Oil -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/81F4kRUJvQL._SX679_.jpg" class="card-img-top" alt="Shell Advance Oil">
+        <div class="card-body">
+          <h5 class="card-title">Shell Advance Oil</h5>
+          <p class="price">₹550</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 4: Gulf Pride 4T -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71w6Qw8v6GL._SX679_.jpg" class="card-img-top" alt="Gulf Pride 4T">
+        <div class="card-body">
+          <h5 class="card-title">Gulf Pride 4T</h5>
+          <p class="price">₹400</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 5: Servo 4T Oil -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/81w6Qw8v6GL._SX679_.jpg" class="card-img-top" alt="Servo 4T Oil">
+        <div class="card-body">
+          <h5 class="card-title">Servo 4T Oil</h5>
+          <p class="price">₹350</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 6: HP Racer 4T -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/81F4kRUJvQL._SX679_.jpg" class="card-img-top" alt="HP Racer 4T">
+        <div class="card-body">
+          <h5 class="card-title">HP Racer 4T</h5>
+          <p class="price">₹420</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 7 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71Brjx44+aL._SX679_.jpg" class="card-img-top" alt="Castrol Power1">
+        <div class="card-body">
+          <h5 class="card-title">Castrol Power1</h5>
+          <p class="price">₹500</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 8 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/81F4kRUJvQL._SX679_.jpg" class="card-img-top" alt="Motul 7100">
+        <div class="card-body">
+          <h5 class="card-title">Motul 7100</h5>
+          <p class="price">₹1,100</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 9 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/71w6Qw8v6GL._SX679_.jpg" class="card-img-top" alt="Shell AX7">
+        <div class="card-body">
+          <h5 class="card-title">Shell AX7</h5>
+          <p class="price">₹600</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Oil Brand 10 -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white">
+        <img src="https://m.media-amazon.com/images/I/81F4kRUJvQL._SX679_.jpg" class="card-img-top" alt="Servo 4T Premium">
+        <div class="card-body">
+          <h5 class="card-title">Servo 4T Premium</h5>
+          <p class="price">₹380</p>
+          <button class="btn btn-buy btn-block" data-toggle="modal" data-target="#contactModal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Section (add this before the footer) -->
+<div class="container my-5" id="cartSection">
+  <h3 class="text-white">🛒 Your Cart</h3>
+  <ul class="list-group" id="cartList"></ul>
+  <p class="text-white mt-2" id="cartEmptyMsg">Your cart is empty.</p>
+  <h5 class="text-white mt-3">Total: <span id="cartTotal">₹0</span></h5>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Search & Filter
+    const searchInput = document.getElementById("bikeSearch");
+    const priceFilter = document.getElementById("priceFilter");
+    const cards = document.querySelectorAll(".card");
+
+    function filterBikes() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const priceValue = priceFilter.value;
+
+      cards.forEach(card => {
+        const title = card.querySelector(".card-title").textContent.toLowerCase();
+        const price = parseInt(card.querySelector(".price").textContent.replace(/[^\d]/g, ""));
+
+        const matchesSearch = title.includes(searchTerm);
+        let matchesPrice = true;
+
+        if (priceValue === "below1L") matchesPrice = price < 100000;
+        else if (priceValue === "1to3L") matchesPrice = price >= 100000 && price <= 300000;
+        else if (priceValue === "above3L") matchesPrice = price > 300000;
+
+        if (matchesSearch && matchesPrice) {
+          card.parentElement.style.display = "block";
+        } else {
+          card.parentElement.style.display = "none";
+        }
+      });
+    }
+
+    searchInput.addEventListener("input", filterBikes);
+    priceFilter.addEventListener("change", filterBikes);
+
+    // Cart functionality
+    let cart = [];
+    const cartList = document.getElementById("cartList");
+    const cartEmptyMsg = document.getElementById("cartEmptyMsg");
+    const cartTotal = document.getElementById("cartTotal");
+
+    document.querySelectorAll(".btn-buy").forEach((btn, idx) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const card = btn.closest(".card");
+        const title = card.querySelector(".card-title").textContent;
+        const price = card.querySelector(".price").textContent;
+        const img = card.querySelector("img").src;
+
+        cart.push({ title, price, img });
+        renderCart();
+      });
+    });
+
+    function renderCart() {
+      cartList.innerHTML = "";
+      let total = 0;
+      if (cart.length === 0) {
+        cartEmptyMsg.style.display = "block";
+      } else {
+        cartEmptyMsg.style.display = "none";
+        cart.forEach((item, idx) => {
+          const priceNum = parseInt(item.price.replace(/[^\d]/g, ""));
+          total += priceNum;
+          const li = document.createElement("li");
+          li.className = "list-group-item bg-dark text-white d-flex align-items-center";
+          li.innerHTML = `
+            <img src="${item.img}" alt="" style="width:40px;height:40px;object-fit:cover;margin-right:10px;border-radius:5px;">
+            <span class="flex-grow-1">${item.title}</span>
+            <span class="ml-2">${item.price}</span>
+            <button class="btn btn-danger btn-sm ml-3 btn-remove" data-idx="${idx}">Remove</button>
+          `;
+          cartList.appendChild(li);
+        });
+      }
+      cartTotal.textContent = "₹" + total.toLocaleString();
+      document.querySelectorAll(".btn-remove").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const idx = parseInt(btn.getAttribute("data-idx"));
+          cart.splice(idx, 1);
+          renderCart();
+        });
+      });
+    }
+
+    // Example: Save selected services to PHP backend
+    function saveSelectedServicesToBackend() {
+      fetch('save_cart.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(selectedServices)
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Optionally show a message
+        // alert('Saved to backend!');
+      });
+    }
+  });
+</script>
+
+<!-- Map Section -->
+<div class="container my-4">
+  <h5 class="text-center mb-3">Find Us at Nandha Engineering College</h5>
+  <iframe 
+    src="https://www.google.com/maps?q=nandha+engineering+college&output=embed" 
+    width="100%" 
+    height="300" 
+    frameborder="0" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="text-center py-3">
+  &copy; 2025 Bike Zone. All rights reserved.
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Filter Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("bikeSearch");
+    const priceFilter = document.getElementById("priceFilter");
+    const cards = document.querySelectorAll(".card");
+
+    function filterBikes() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const priceValue = priceFilter.value;
+
+      cards.forEach(card => {
+        const title = card.querySelector(".card-title").textContent.toLowerCase();
+        const price = parseInt(card.querySelector(".price").textContent.replace(/[^\d]/g, ""));
+
+        const matchesSearch = title.includes(searchTerm);
+        let matchesPrice = true;
+
+        if (priceValue === "below1L") matchesPrice = price < 100000;
+        else if (priceValue === "1to3L") matchesPrice = price >= 100000 && price <= 300000;
+        else if (priceValue === "above3L") matchesPrice = price > 300000;
+
+        if (matchesSearch && matchesPrice) {
+          card.parentElement.style.display = "block";
+        } else {
+          card.parentElement.style.display = "none";
+        }
+      });
+    }
+
+    searchInput.addEventListener("input", filterBikes);
+    priceFilter.addEventListener("change", filterBikes);
+  });
+</script>
+
+
+
+
+<script>
+document.querySelector("form").onsubmit = function(e) {
+  e.preventDefault();
+  fetch("send_message.php", {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(res => res.text())
+  .then(alert);
+};
+</script>
+</body>
+</html>

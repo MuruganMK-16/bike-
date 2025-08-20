@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bike Zone | Service</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #111;
+      color: white;
+    }
+
+    .navbar, footer {
+      background-color: #000;
+    }
+
+    .navbar .nav-link, .navbar .navbar-brand {
+      color: white !important;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      color: #4CAF50;
+    }
+
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .form-control {
+      background-color: #222;
+      border: none;
+      color: white;
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      background-color: #333;
+    }
+
+    .btn-submit {
+      background-color: #28a745;
+      border: none;
+    }
+
+    .btn-submit:hover {
+      background-color: #218838;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+      height: 250px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    /* New styles for selected services section */
+    #selectedServicesSection {
+      display: none;
+    }
+
+    #selectedServicesList {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .list-group-item {
+      background-color: #222;
+      border: none;
+    }
+
+    .btn-remove-service {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="#">Bike Zone</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item active"><a class="nav-link" href="shop.html">Shop</a></li>
+      <li class="nav-item active"><a class="nav-link" href="service.html">Service</a></li>
+      <li class="nav-item active"><a class="nav-link" href="about.html">about</a></li>
+      <li class="nav-item active"><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Services Section -->
+<div class="container my-5">
+  <h2 class="section-title">Our Bike Services</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="service-card text-center" data-toggle="modal" data-target="#generalServiceModal">
+        <div class="service-icon mb-2"><i class="bi bi-tools"></i></div>
+        <h5>General Service</h5>
+        <p>Complete checkup & oil change for smooth riding experience.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="service-card text-center" data-toggle="modal" data-target="#engineRepairModal">
+        <div class="service-icon mb-2"><i class="bi bi-gear-fill"></i></div>
+        <h5>Engine Repair</h5>
+        <p>Expert engine diagnostics and repairs to keep your bike powerful.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="service-card text-center" data-toggle="modal" data-target="#oilChangeModal">
+        <div class="service-icon mb-2"><i class="bi bi-droplet-half"></i></div>
+        <h5>Oil Change</h5>
+        <p>High-quality oil replacements for peak engine performance.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="service-card text-center" data-toggle="modal" data-target="#brakeServiceModal">
+        <div class="service-icon mb-2"><i class="bi bi-exclamation-triangle"></i></div>
+        <h5>Brake Service</h5>
+        <p>Brake pad replacement, disc cleaning, and brake fluid top-up.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="service-card text-center" data-toggle="modal" data-target="#tyreServiceModal">
+        <div class="service-icon mb-2"><i class="bi bi-circle-half"></i></div>
+        <h5>Tyre & Wheel Service</h5>
+        <p>Tyre change, wheel alignment, and balancing.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="service-card text-center" data-toggle="modal" data-target="#electricalServiceModal">
+        <div class="service-icon mb-2"><i class="bi bi-lightning-charge"></i></div>
+        <h5>Electrical Service</h5>
+        <p>Battery, lights, horn, and wiring check.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="service-card text-center" data-toggle="modal" data-target="#suspensionServiceModal">
+        <div class="service-icon mb-2"><i class="bi bi-arrow-down-up"></i></div>
+        <h5>Suspension Service</h5>
+        <p>Fork oil change, bush replacement, and shock absorber check.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="service-card text-center" data-toggle="modal" data-target="#clutchServiceModal">
+        <div class="service-icon mb-2"><i class="bi bi-sliders"></i></div>
+        <h5>Clutch Service</h5>
+        <p>Clutch plate replacement and cable adjustment.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Selected Services Section -->
+<div class="container my-5" id="selectedServicesSection">
+  <h4 class="text-white">📝 Selected Services</h4>
+  <ul class="list-group" id="selectedServicesList"></ul>
+  <p class="text-white mt-2" id="servicesEmptyMsg">No services selected.</p>
+  <h5 class="text-white mt-3">Total: <span id="servicesTotal">₹0</span></h5>
+</div>
+
+<!-- Map -->
+<div class="container my-4">
+  <h5 class="section-title">Find Us at Nandha Engineering College</h5>
+  <iframe src="https://www.google.com/maps?q=nandha+engineering+college&output=embed"></iframe>
+</div>
+
+<!-- Footer -->
+<footer class="text-center py-3" id="contact">
+  <p>&copy; 2025 Bike Zone. All rights reserved.</p>
+  <p>Contact: <a href="tel:9786980202" class="text-success">9786980202</a> |
+     <a href="tel:9994571310" class="text-success">9994571310</a> |
+     <a href="tel:9600678328" class="text-success">9600678328</a></p>
+  <p>Follow us: <a href="https://instagram.com/muruga._.mk" target="_blank">@muruga._.mk</a></p>
+</footer>
+
+<!-- Modals -->
+<div class="modal fade" id="generalServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">General Service</h5>
+        <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Complete body wash & polish</li>
+          <li>Brake check & adjustment</li>
+          <li>Chain lubrication</li>
+          <li>Tyre air pressure check</li>
+          <li>Battery & horn testing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="engineRepairModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">Engine Repair</h5>
+        <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Engine oil leakage inspection</li>
+          <li>Compression & noise check</li>
+          <li>Valve clearance adjustment</li>
+          <li>Carburetor cleaning</li>
+          <li>Spark plug replacement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="oilChangeModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">Oil Change</h5>
+        <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Drain old engine oil safely</li>
+          <li>Replace with recommended engine oil</li>
+          <li>Inspect oil filter condition</li>
+          <li>Post-change engine performance check</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="brakeServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">Brake Service</h5>
+        <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tyreServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">Tyre & Wheel Service</h5>
+        <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Tyre change</li>
+          <li>Wheel alignment</li>
+          <li>Balancing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="electricalServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">Electrical Service</h5>
+        <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Battery check</li>
+          <li>Lights inspection</li>
+          <li>Horn functionality check</li>
+          <li>Wiring condition check</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="suspensionServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">Suspension Service</h5>
+        <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Fork oil change</li>
+          <li>Bush replacement</li>
+          <li>Shock absorber check</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="clutchServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">Clutch Service</h5>
+        <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Clutch plate replacement</li>
+          <li>Cable adjustment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Expanded service data: modalId, [serviceName, price]
+  const serviceData = {
+    generalService: [
+      { name: "Complete body wash & polish", price: 200 },
+      { name: "Brake check & adjustment", price: 150 },
+      { name: "Chain lubrication", price: 100 },
+      { name: "Tyre air pressure check", price: 50 },
+      { name: "Battery & horn testing", price: 80 }
+    ],
+    engineRepair: [
+      { name: "Engine oil leakage inspection", price: 250 },
+      { name: "Compression & noise check", price: 200 },
+      { name: "Valve clearance adjustment", price: 180 },
+      { name: "Carburetor cleaning", price: 220 },
+      { name: "Spark plug replacement", price: 120 }
+    ],
+    oilChange: [
+      { name: "Drain old engine oil safely", price: 70 },
+      { name: "Replace with recommended engine oil", price: 350 },
+      { name: "Inspect oil filter condition", price: 90 },
+      { name: "Post-change engine performance check", price: 60 }
+    ],
+    brakeService: [
+      { name: "Brake pad replacement", price: 400 },
+      { name: "Disc cleaning", price: 150 },
+      { name: "Brake fluid top-up", price: 120 },
+      { name: "Brake lever adjustment", price: 80 }
+    ],
+    tyreService: [
+      { name: "Tyre change (front/rear)", price: 800 },
+      { name: "Wheel alignment", price: 300 },
+      { name: "Wheel balancing", price: 250 },
+      { name: "Puncture repair", price: 100 }
+    ],
+    electricalService: [
+      { name: "Battery check", price: 100 },
+      { name: "Lights & indicators check", price: 80 },
+      { name: "Horn replacement", price: 90 },
+      { name: "Wiring inspection", price: 150 }
+    ],
+    suspensionService: [
+      { name: "Fork oil change", price: 350 },
+      { name: "Bush replacement", price: 200 },
+      { name: "Shock absorber check", price: 180 },
+      { name: "Suspension tuning", price: 220 }
+    ],
+    clutchService: [
+      { name: "Clutch plate replacement", price: 600 },
+      { name: "Clutch cable adjustment", price: 100 },
+      { name: "Clutch lever lubrication", price: 60 }
+    ],
+    chainService: [
+      { name: "Chain cleaning", price: 120 },
+      { name: "Chain lubrication", price: 80 },
+      { name: "Chain tension adjustment", price: 70 }
+    ],
+    coolantService: [
+      { name: "Coolant flush", price: 200 },
+      { name: "Coolant top-up", price: 120 }
+    ]
+  };
+
+  // Render checkboxes in modals
+  function renderCheckboxes(modalId, serviceKey) {
+    const modalBody = document.querySelector(`#${modalId} .modal-body`);
+    if (!modalBody) return;
+    modalBody.innerHTML = "";
+    serviceData[serviceKey].forEach((item, idx) => {
+      const id = `${modalId}-cb-${idx}`;
+      modalBody.innerHTML += `
+        <div class="form-check text-left">
+          <input class="form-check-input service-checkbox" type="checkbox" value="" id="${id}" data-name="${item.name}" data-price="${item.price}">
+          <label class="form-check-label" for="${id}">
+            ${item.name} <span class="text-success">₹${item.price}</span>
+          </label>
+        </div>
+      `;
+    });
+  }
+
+  // Render checkboxes on modal show for all services
+  $('#generalServiceModal').on('show.bs.modal', function () {
+    renderCheckboxes('generalServiceModal', 'generalService');
+  });
+  $('#engineRepairModal').on('show.bs.modal', function () {
+    renderCheckboxes('engineRepairModal', 'engineRepair');
+  });
+  $('#oilChangeModal').on('show.bs.modal', function () {
+    renderCheckboxes('oilChangeModal', 'oilChange');
+  });
+  $('#brakeServiceModal').on('show.bs.modal', function () {
+    renderCheckboxes('brakeServiceModal', 'brakeService');
+  });
+  $('#tyreServiceModal').on('show.bs.modal', function () {
+    renderCheckboxes('tyreServiceModal', 'tyreService');
+  });
+  $('#electricalServiceModal').on('show.bs.modal', function () {
+    renderCheckboxes('electricalServiceModal', 'electricalService');
+  });
+  $('#suspensionServiceModal').on('show.bs.modal', function () {
+    renderCheckboxes('suspensionServiceModal', 'suspensionService');
+  });
+  $('#clutchServiceModal').on('show.bs.modal', function () {
+    renderCheckboxes('clutchServiceModal', 'clutchService');
+  });
+
+  // Example for extra services (add modals in HTML for these)
+  // $('#chainServiceModal').on('show.bs.modal', function () {
+  //   renderCheckboxes('chainServiceModal', 'chainService');
+  // });
+  // $('#coolantServiceModal').on('show.bs.modal', function () {
+  //   renderCheckboxes('coolantServiceModal', 'coolantService');
+  // });
+
+  // To-Do (selected services) logic
+  let selectedServices = [];
+  const selectedServicesList = document.getElementById("selectedServicesList");
+  const servicesEmptyMsg = document.getElementById("servicesEmptyMsg");
+  const servicesTotal = document.getElementById("servicesTotal");
+  const selectedServicesSection = document.getElementById("selectedServicesSection");
+
+  // Listen for checkbox changes in all modals
+  $(document).on('change', '.service-checkbox', function () {
+    const name = this.getAttribute('data-name');
+    const price = parseInt(this.getAttribute('data-price'));
+    if (this.checked) {
+      if (!selectedServices.some(item => item.name === name)) {
+        selectedServices.push({ name, price });
+      }
+    } else {
+      selectedServices = selectedServices.filter(item => item.name !== name);
+    }
+    renderSelectedServices();
+  });
+
+  function renderSelectedServices() {
+    selectedServicesList.innerHTML = "";
+    let total = 0;
+    if (selectedServices.length === 0) {
+      servicesEmptyMsg.style.display = "block";
+      selectedServicesSection.style.display = "none";
+    } else {
+      servicesEmptyMsg.style.display = "none";
+      selectedServicesSection.style.display = "block";
+      selectedServices.forEach((item, idx) => {
+        total += item.price;
+        const li = document.createElement("li");
+        li.className = "list-group-item bg-dark text-white d-flex align-items-center";
+        li.innerHTML = `
+          <span class="flex-grow-1">${item.name}</span>
+          <span class="ml-2">₹${item.price}</span>
+          <button class="btn btn-danger btn-sm ml-3 btn-remove-service" data-idx="${idx}">Remove</button>
+        `;
+        selectedServicesList.appendChild(li);
+      });
+    }
+    servicesTotal.textContent = "₹" + total;
+    // Remove button logic
+    document.querySelectorAll(".btn-remove-service").forEach(btn => {
+      btn.addEventListener("click", function () {
+        const idx = parseInt(btn.getAttribute("data-idx"));
+        // Remove from selectedServices
+        const removed = selectedServices.splice(idx, 1)[0];
+        renderSelectedServices();
+        // Uncheck the corresponding checkbox in any modal
+        document.querySelectorAll('.service-checkbox').forEach(cb => {
+          if (cb.getAttribute('data-name') === removed.name) {
+            cb.checked = false;
+          }
+        });
+      });
+    });
+  }
+});
+</script>
+</body>
+</html>
